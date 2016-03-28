@@ -36,8 +36,9 @@ Template.logIn.events({
         
         /**
  	 * If login fails show the error message else go to /upload 
-	 */
-
+	
+	*/
+	clearNotifications();
 	if (isNotEmpty(email) &&
 	    isEmail(email) &&
 	    isNotEmpty(password) &&

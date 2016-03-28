@@ -44,6 +44,7 @@ Template.forgotPassword.events({
 	    isEmail(email)) {
 	    Accounts.forgotPassword({email:email},function(err){
 		if (err) {
+			clearNotifications();
 		    throwError(err.reason);
 	        } else {
 		    throwNotification('Email Sent, Please check your mailbox to reset your password');

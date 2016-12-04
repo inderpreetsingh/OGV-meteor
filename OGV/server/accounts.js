@@ -27,14 +27,14 @@
  *  and use OGV.
  */
 
-Accounts.config({
-  sendVerificationEmail: true
-});
-
 /**
  * Create a test user without admin roles and a super user with 
  * admin roles on a fresh install (when number of users is zero)
  */
+Accounts.config({
+  sendVerificationEmail:true,
+  //forbidClientAccountCreation: false
+})
 
 if (Meteor.users.find().fetch().length === 0) {
     var users = [
@@ -50,7 +50,7 @@ if (Meteor.users.find().fetch().length === 0) {
 	id = Accounts.createUser({
 	    email: userData.email,
             password: "ogv123",
-            profile: { name: userData.name, bio: Bio, pic: false }
+            profile: { name: userData.name, bio: Bio }
 	});
 
 	// email verification
@@ -59,4 +59,57 @@ if (Meteor.users.find().fetch().length === 0) {
 	Roles.addUsersToRoles(id, userData.roles);
     
     });
-}
+
+} 
+
+Accounts.onCreateUser(function(options, user) {
+    var followingArray = [];
+    //followingArray[0] = user._id;
+    var adminUser = Meteor.users.findOne({'roles.0': "admin"});
+    followingArray[0] = adminUser._id;
+    followingArray[1] = user._id;
+
+    if (options.profile){
+        options.profile.following = followingArray;
+        user.profile = options.profile;
+    } else {
+	console.log(options);
+    }
+
+    return user;
+});
+
+/*Meteor.users.allow({
+    update: function(userId, user, fields) 
+    {   
+        if (!fields.isEqualTo(['profile.following', 'profile.follower'])) { 
+            return false; 
+        } else {
+            return true;
+        }
+    }    
+});
+*/
+
+
+/**
+*  Need to allow the users to update only the followers array of other users
+*/
+Meteor.users.allow({
+    update: function(userId, user, fieldNames, modifier) 
+    {
+        return true;
+    }    
+});
+
+/**
+ * Intended to Delete/Remove users who have not verified their Emails in hrs hours
+ */
+var hrs = 1;
+Meteor.setInterval(function() {
+    Meteor.users.find({'emails.0.verified': false}).forEach(function(user) {
+        //Do action with 'user' that has not verified email for 1 hour
+        Meteor.users.remove({_id: user._id}, true);
+    });
+}, (3600000 * hrs));
+

@@ -19,7 +19,7 @@
  */
 
 /**
- * This file contains inital settings that are entered into database
+ * This file contains initial settings that are entered into database
  * during the first installation of the software 
  */
 if (OgvSettings.find().count() === 0) 
@@ -28,7 +28,7 @@ if (OgvSettings.find().count() === 0)
 	settingSwitch: true,
 	siteName :"Online Geometry Viewer",
 	mailUrl : "http://username:password@example.com",
-	gobjPath : "/usr/brlcad/dev-7.25.0/bin/g-obj",
-	mgedPath : "/usr/brlcad/dev-7.25.0/bin/mged"
+	gobjPath : "/usr/brlcad/dev-7.24.2/bin/g-obj",
+	mgedPath : "/usr/brlcad/dev-7.24.2/bin/mged"
     }); 
 }

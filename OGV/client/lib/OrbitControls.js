@@ -44,8 +44,8 @@ THREE.OrbitControls = function ( object, domElement ) {
 	this.zoomSpeed = 1.0;
 
 	// Limits to how far you can dolly in and out
-	this.minDistance = 0;
-	this.maxDistance = Infinity;
+	this.minDistance = 20;
+	this.maxDistance = 10000;
 
 	// Set to true to disable this control
 	this.noRotate = false;
@@ -257,7 +257,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 		// restrict phi to be between desired limits
 		phi = Math.max( this.minPolarAngle, Math.min( this.maxPolarAngle, phi ) );
 
-		// restrict phi to be betwee EPS and PI-EPS
+		// restrict phi to be between EPS and PI-EPS
 		phi = Math.max( EPS, Math.min( Math.PI - EPS, phi ) );
 
 		var radius = offset.length() * scale;

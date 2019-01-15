@@ -9,6 +9,12 @@ platform for 3D models.
 
 ## Install
 
+Clone this repo
+
+```sh
+git clone https://github.com/BRL-CAD/OGV-meteor.git
+```
+
 ### Debian and Ubuntu based Linux distributions
 #### Using install script
 ```sh

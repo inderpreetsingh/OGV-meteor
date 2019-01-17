@@ -23,15 +23,8 @@
  *  configures mailing system for emailVerification and forgotPassword
  *  consists of changes to emailTemplates for the same
  */
-const username =
-  "postmaster%40sandbox5cb71a0119964fde80f91c415ef345a2.mailgun.org";
 Meteor.startup(() => {
-  smtp = {
-    username,
-    password: "b38c82be7ed0b4046bdc856547c655d3",
-    server: "smtp.mailgun.org",
-    port: 587
-  };
+  smtp = Meteor.settings.public.smtp;
 
   process.env.MAIL_URL =
     `smtp://${encodeURIComponent(smtp.username)}` +

@@ -32,5 +32,9 @@
   "bugs": {
     "url": "https://github.com/BRL-CAD/OGV-meteor/issues"
   },
-  "homepage": "https://github.com/BRL-CAD/OGV-meteor#readme"
+  "homepage": "https://github.com/BRL-CAD/OGV-meteor#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.40",
+    "bcrypt": "^1.0.3"
+  }
 }

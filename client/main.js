@@ -25,7 +25,7 @@ import "../imports/ui/layouts/layout.js"; // Main layout
 import "../imports/ui/components/header.js"; // Header
 import "../imports/ui/components/menu_new.js"; // temp new menu
 import "../imports/ui/components/preloader.js"; // Preloader
-import "../imports/ui/pages/data_not_found.js"; 
+import "../imports/ui/components/error.js";
 
 import "../imports/ui/pages/landingPage.js"; // /
 import "../imports/ui/pages/model_feed.js"; // /newsfeed
@@ -99,7 +99,7 @@ Meteor.subscribe("posts");
 
 Router.configure({
   layoutTemplate: "layout",
-  notFoundTemplate: "notFound",
+  notFoundTemplate: "error",
   loadingTemplate: "preloader"
 });
 
@@ -230,7 +230,7 @@ Router.map(function() {
 // rendering the dataNotFound template if your RouteController
 // data function returns a falsy value
 Router.plugin("dataNotFound", {
-  notFoundTemplate: "data404"
+  notFoundTemplate: "error"
 });
 
 /**

@@ -6,6 +6,7 @@ node_modules
 
 # vs code
 .vscode
+.idea
 
 # sensitive config
 config.json

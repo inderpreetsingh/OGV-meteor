@@ -26,7 +26,7 @@ echo "# Removed OGV-meteor.tar.gz"
 
 # Install deps
 echo "# Installing dependencies..."
-#(cd $OUT/bundle/programs/server && npm install)
+(cd $OUT/bundle/programs/server && npm install)
 echo "# Installed dependencies"
 
 # Create script

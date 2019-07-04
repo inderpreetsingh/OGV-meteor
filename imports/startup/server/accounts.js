@@ -32,32 +32,34 @@
  * admin roles on a fresh install (when number of users is zero)
  */
 
-//Setting Meteor Admin User Settings.
-function passwordGen(len){
-    var text = " ";
-    var charset = "abcdefghijklmnopqrstuvwxyz0123456789";
-    for( var i=0; i < len; i++ )
-        text += charset.charAt(Math.floor(Math.random() * charset.length));
-    return text;
-}
-
-//Generating 32 Length Alphanumeric Password.
-var randomPassword = passwordGen(32)
-
-//Applying Password to Meteor Admin User Settings and Logging to Server.
-Meteor.settings = {
-	adminPassword: "password",
-	private:{},
-	public : {
-		smtp: {
-			username: "postmaster%40sandbox5cb71a0119964fde80f91c415ef345a2.mailgun.org",
-			password: randomPassword,
-			"server": "smtp.mailgun.org",
-			"port": 587
+//Set Meteor Admin Password ONLY if it has not been set.
+if(Meteor.settings.adminPassword==="password"){
+	
+	//Generating 8 Length Alphanumeric Password.
+	function passwordGen(len){
+	    var text = " ";
+	    var charset = "abcdefghijklmnopqrstuvwxyz0123456789";
+	    for( var i=0; i < len; i++ )
+		text += charset.charAt(Math.floor(Math.random() * charset.length));
+	    return text;
+	}
+	
+	//Applying Password to Meteor Admin User Settings and Logging to Server.
+	var randomPassword = passwordGen(8)
+	Meteor.settings = {
+		adminPassword: randomPassword,
+		private:{},
+		public : {
+			smtp: {
+				username: "postmaster%40sandbox5cb71a0119964fde80f91c415ef345a2.mailgun.org",
+				password: "b38c82be7ed0b4046bdc856547c655d3",
+				"server": "smtp.mailgun.org",
+				"port": 587
+			}
 		}
 	}
+	console.log("Admin Password: " + Meteor.settings.adminPassword);
 }
-console.log("Admin Password: " + Meteor.settings.public.smtp.password);
 
 Accounts.config({
   sendVerificationEmail: true

@@ -45,7 +45,7 @@ function passwordGen(len){
 var randomPassword = passwordGen(8)
 
 //User ID for Admin is currently bMfEoAFqu4EibGwtH
-console.log("Admin Password:" + Meteor.settings.adminPassword);
+console.log("Admin Password:" + randomPassword);
 Accounts.setPassword("bMfEoAFqu4EibGwtH",randomPassword)
 
 

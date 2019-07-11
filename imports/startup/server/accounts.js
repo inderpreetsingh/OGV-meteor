@@ -42,23 +42,12 @@ function passwordGen(len){
 }
 
 //Applying Password to Meteor Admin User Settings and Logging to Server.
-if(Meteor.settings.adminPassword==="password"){
-  var randomPassword = passwordGen(8)
+var randomPassword = passwordGen(8)
 
-  Meteor.settings = {
-	adminPassword: randomPassword,
-	private:{},
-	public : {
-		smtp: {
-			username: Meteor.settings.public.smtp.username,
-			password: Meteor.settings.public.smtp.password,
-			server: Meteor.settings.public.smtp.server,
-			port: Meteor.settings.public.smtp.port
-		}
-	}
- }
+//User ID for Admin is currently bMfEoAFqu4EibGwtH
 console.log("Admin Password:" + Meteor.settings.adminPassword);
-}
+Accounts.setPassword("bMfEoAFqu4EibGwtH",randomPassword)
+
 
 Accounts.config({
   sendVerificationEmail: true
@@ -79,9 +68,11 @@ if (Meteor.users.find().fetch().length === 0) {
     }
   ];
 
+  
+
   const Bio = "greatest 3d modeller on the planet";
   _.each(users, userData => {
-    const password = Meteor.settings.adminPassword;
+    const password = randomPassword;
     const id = Accounts.createUser({
       email: userData.email,
       password: password,

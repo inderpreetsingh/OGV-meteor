@@ -106,17 +106,23 @@ else if(Meteor.users.find().fetch().length === 0) {
   //Find Admin User ID.
   var adminUser = Accounts.findUserByEmail("admin@example.com");
 
-  //Creating New 8 Digit Alphanumeric Password.
+  //Creating Admin Password.
+  var adminPassword = Meteor.settings.adminPassword;
   var randomPassword = passwordGen(8);
   var newPassword = randomPassword.substring(1);
 
-  //Applying Password to Meteor Admin User and Logging to Server.
+  //Applying Password to Meteor Admin User
   if(Meteor.settings.adminPassword==="password"){
-    //ONLY IF PASSWORD HAS NOT BEEN SET ON ADMIN,
-    //Apply Password to Meteor Admin User and Logging to Server 
+    //Apply New Password to Meteor Admin User
     Accounts.setPassword(adminUser,newPassword);
     console.log("Admin Email: " + "admin@example.com");
     console.log("Admin Password: " + newPassword);
+  }
+  else{
+    //Apply Meteor Settings Password to Meteor Admin User
+    Accounts.setPassword(adminUser,adminPassword);
+    console.log("Admin Email: " + "admin@example.com");
+    console.log("Admin Password: " + adminPassword);
   }
 }
 

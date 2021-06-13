@@ -30,9 +30,8 @@ function uploadFile(event) {
         sAlert.success(
           "File Uploaded, and will appear in file manager after it's converted"
         );
+        Router.go(`/processing/${fsFile._id}`);
       }
     });
-
-    Router.go(`/processing/${fsFile._id}`);
   });
 }

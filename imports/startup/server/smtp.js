@@ -24,14 +24,14 @@
  *  consists of changes to emailTemplates for the same
  */
 Meteor.startup(() => {
-  smtp = Meteor.settings.public.smtp;
+  const { smtp, general } = Meteor.settings.public;
 
   process.env.MAIL_URL =
     `smtp://${encodeURIComponent(smtp.username)}` +
     `:${encodeURIComponent(smtp.password)}@` +
     `${encodeURIComponent(smtp.server)}:${smtp.port}`;
 
-  Accounts.emailTemplates.from = "no-reply@yourdomain.com";
+  Accounts.emailTemplates.from = general.sender;
   Accounts.emailTemplates.sitename = "Online Geometry Viewer";
 
   Accounts.emailTemplates.verifyEmail.subject = function() {

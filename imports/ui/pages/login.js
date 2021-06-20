@@ -43,6 +43,7 @@ Template.logIn.events({
     if (
       isNotEmpty(email) &&
       isEmail(email) &&
+      isAdminEmailServerOn(email) &&
       isNotEmpty(password) &&
       isValidPassword(password)
     ) {

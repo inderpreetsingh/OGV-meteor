@@ -39,15 +39,18 @@ Template.modelMeta.events({
     e.preventDefault();
     a = e;
     const modelMetaForm = $(e.currentTarget),
-      filename = modelMetaForm.find("#desc-filename").val().toLowerCase(),
+      filename = modelMetaForm
+        .find("#desc-filename")
+        .val()
+        .toLowerCase(),
       description = modelMetaForm.find("#desc-about").val(),
       modelId = modelMetaForm.find("#model-id").val(),
       audience = modelMetaForm.find("#desc-audience").val(),
       currentUser = Meteor.user();
 
     /**
-    * Adding the checkd boxes to an array named category
-    */
+     * Adding the checkd boxes to an array named category
+     */
     const category = [];
     $("input:checkbox[name=category]:checked").each(function() {
       category.push($(this).val());
@@ -117,10 +120,10 @@ Template.modelMeta.helpers({
 });
 
 /**
-* helper to display already present categories in the model
-* Diplayed everytime when the /description/:_id page is viewed
-* Displays nothing if categories is empty.
-*/
+ * helper to display already present categories in the model
+ * Diplayed everytime when the /description/:_id page is viewed
+ * Displays nothing if categories is empty.
+ */
 Template.modelMeta.modelCategory = function() {
   const id = Session.get("modelId");
   return ModelFiles.findOne({ _id: id });

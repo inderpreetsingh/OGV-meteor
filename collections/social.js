@@ -80,8 +80,8 @@ SharedModels.attachSchema(shareSchema);
 
 Meteor.methods({
   /**
-     * Adds new comment to post
-     */
+   * Adds new comment to post
+   */
   share(shareAttributes) {
     const user = Meteor.user();
 
@@ -127,8 +127,8 @@ Meteor.methods({
     const post = ModelFiles.findOne(commentAttributes.postId);
 
     /**
-         * Validations before adding comments.
-         */
+     * Validations before adding comments.
+     */
     if (!user) {
       throw new Meteor.Error(401, "You need to login to make comments");
     }
@@ -163,8 +163,8 @@ Meteor.methods({
   },
 
   /**
-     * Adds one to lovemeter
-     */
+   * Adds one to lovemeter
+   */
   love(loveAttributes) {
     const lovers = [];
     let alreadyLoved = false;
@@ -186,10 +186,10 @@ Meteor.methods({
     }
 
     /**
-         * If someone has loved the post aka there's at least one love
-         * in the lovemeter then add 1 to it otherwise create new lovers
-         * Object in the database.
-         */
+     * If someone has loved the post aka there's at least one love
+     * in the lovemeter then add 1 to it otherwise create new lovers
+     * Object in the database.
+     */
 
     if (loversObj) {
       loversArray = loversObj.lovers;
@@ -201,8 +201,8 @@ Meteor.methods({
         }
       }
       /**
-             * If user already loves the post, then throw an error
-             */
+       * If user already loves the post, then throw an error
+       */
       if (!alreadyLoved) {
         loversArray.push(user._id);
       }

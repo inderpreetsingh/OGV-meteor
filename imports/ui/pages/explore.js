@@ -114,9 +114,9 @@ Template.exploreResult.helpers ({
 
 Template.exploreResult.helpers({
   /**
-     * models helper finds all the models from the database and then sorts
-     * them in reverse chronological order.
-     */
+   * models helper finds all the models from the database and then sorts
+   * them in reverse chronological order.
+   */
   models() {
     const currentUser = Meteor.user();
     const audience = ["public", "followers"];

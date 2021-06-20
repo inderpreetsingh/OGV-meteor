@@ -33,11 +33,16 @@ Template.logIn.events({
     e.preventDefault();
 
     const logInForm = $(e.currentTarget),
-      email = trimInput(logInForm.find("#log-in-email").val().toLowerCase()),
+      email = trimInput(
+        logInForm
+          .find("#log-in-email")
+          .val()
+          .toLowerCase()
+      ),
       password = logInForm.find("#log-in-password").val();
 
     /**
-      * If login fails show the error message else go to /upload
+     * If login fails show the error message else go to /upload
      */
 
     if (

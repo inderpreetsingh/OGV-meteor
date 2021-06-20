@@ -2,8 +2,8 @@ import "./newsfeed_sidebar.html";
 
 Template.newsfeedSidebar.events({
   /**
-     * Follow button functionality for suggested Users.
-     */
+   * Follow button functionality for suggested Users.
+   */
   "click #followButton": function() {
     let otherId;
     button = $("#followButton")[0];
@@ -55,11 +55,11 @@ Template.newsfeedSidebar.items = function() {
 
 Template.newsfeedSidebar.helpers({
   /**
-     * Returns user info of other user
-     * All users excluding the ones who are being already followed and the user himself
-     * Sorted on the basis of number of Models.
-     * Users having highest number of models will be displayed on top.
-     */
+   * Returns user info of other user
+   * All users excluding the ones who are being already followed and the user himself
+   * Sorted on the basis of number of Models.
+   * Users having highest number of models will be displayed on top.
+   */
   suggestownerInfo() {
     const currentUser = Meteor.user();
     return Meteor.users.find(
@@ -87,8 +87,8 @@ Template.newsfeedSidebar.helpers({
   },
 
   /**
-     * Returns image details of the same users in the same order as mentioned above.
-     */
+   * Returns image details of the same users in the same order as mentioned above.
+   */
   suggestownerImg() {
     const currentUser = Meteor.user();
     const otherUser = Meteor.users
@@ -101,7 +101,7 @@ Template.newsfeedSidebar.helpers({
               }
             },
             {
-              _id: {
+              id: {
                 $not: currentUser._id
               }
             }
@@ -128,8 +128,8 @@ Template.newsfeedSidebar.helpers({
   },
 
   /**
-     * Returns models based on popularity be seeing the number of views.
-     */
+   * Returns models based on popularity be seeing the number of views.
+   */
   suggestedModel() {
     const currentUser = Meteor.user();
     return ModelFiles.find({

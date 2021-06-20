@@ -37,7 +37,10 @@ Template.forgotPassword.events({
 
     const forgotPasswordForm = $(e.currentTarget),
       email = trimInput(
-        forgotPasswordForm.find("#forgot-password-email").val().toLowerCase()
+        forgotPasswordForm
+          .find("#forgot-password-email")
+          .val()
+          .toLowerCase()
       );
     /**
      * Send an email to the user if he forgets the password

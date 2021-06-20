@@ -30,9 +30,9 @@ import "./dashboard.html";
 
 Template.dashboard.events({
   /**
-     * When user form is submitted, upload the picture and save
-     * the settings
-     */
+   * When user form is submitted, upload the picture and save
+   * the settings
+   */
   "submit #dash-user-form": function(e) {
     e.preventDefault();
 
@@ -42,9 +42,9 @@ Template.dashboard.events({
       currentUser = Meteor.user(),
       saveSettings = function(picId) {
         /**
-             * If user has not changed the profile picture then use
-             * existing profile pic.
-             */
+         * If user has not changed the profile picture then use
+         * existing profile pic.
+         */
         if (!picId) {
           picId = currentUser.profile.pic;
         }
@@ -96,9 +96,9 @@ Template.dashboard.events({
   },
 
   /**
-     * When admin form is submitted, get the values form the form
-     * and update the settings.
-     */
+   * When admin form is submitted, get the values form the form
+   * and update the settings.
+   */
   "submit #dash-admin-form": function(e) {
     e.preventDefault();
 

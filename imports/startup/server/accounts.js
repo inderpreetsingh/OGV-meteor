@@ -32,7 +32,6 @@
  * admin roles on a fresh install (when number of users is zero)
  */
 
-
 //Account Configuration (OGV)
 Accounts.config({
   sendVerificationEmail: true
@@ -40,22 +39,18 @@ Accounts.config({
 });
 
 //Generating Admin Password 8 Length Alphanumeric Password.
-function passwordGen(len){
-    var text = " ";
-    var charset = "abcdefghijklmnopqrstuvwxyz0123456789";
-    for( var i=0; i < len; i++ )
-  text += charset.charAt(Math.floor(Math.random() * charset.length));
-    return text;
+function passwordGen(len) {
+  var text = " ";
+  var charset = "abcdefghijklmnopqrstuvwxyz0123456789";
+  for (var i = 0; i < len; i++)
+    text += charset.charAt(Math.floor(Math.random() * charset.length));
+  return text;
 }
 
 //Initializing Admin User Password in Console and Initializing Users if none are present.
 if (Meteor.users.find().fetch().length !== 0) {
-
   console.log("Initial Users Have Already Been Created.");
-
-}
-else if(Meteor.users.find().fetch().length === 0) {
-
+} else if (Meteor.users.find().fetch().length === 0) {
   //Initializing Admin Super User, Initializing Test User.
   console.log("Creating Initial Users");
   const Bio = "Computer Aided Design Product Engineer";
@@ -74,10 +69,8 @@ else if(Meteor.users.find().fetch().length === 0) {
     }
   ];
 
- 
   //Initialize Users with above userData.
   _.each(users, userData => {
-
     const id = Accounts.createUser({
       email: userData.email,
       password: Meteor.settings.adminPassword,
@@ -100,9 +93,7 @@ else if(Meteor.users.find().fetch().length === 0) {
     );
 
     Roles.addUsersToRoles(id, userData.roles);
-
   });
-
 }
 
 //Find Admin User ID.
@@ -114,19 +105,17 @@ var randomPassword = passwordGen(8);
 var newPassword = randomPassword.substring(1);
 
 //Applying Password to Meteor Admin User
-if(Meteor.settings.adminPassword==="password"){
+if (Meteor.settings.adminPassword === "password") {
   //Apply New Password to Meteor Admin User
-  Accounts.setPassword(adminUser,newPassword);
+  Accounts.setPassword(adminUser, newPassword);
   console.log("Admin Email: " + "admin@example.com");
   console.log("Admin Password: " + newPassword);
-}
-else{
+} else {
   //Apply Meteor Settings Password to Meteor Admin User
-  Accounts.setPassword(adminUser,adminPassword);
+  Accounts.setPassword(adminUser, adminPassword);
   console.log("Admin Email: " + "admin@example.com");
   console.log("Admin Password: " + adminPassword);
 }
-
 
 //Applying Meteor Settings and Password, Logging to Server.
 Accounts.onCreateUser((options, user) => {

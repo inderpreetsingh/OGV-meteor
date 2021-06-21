@@ -17,7 +17,9 @@ function uploadFile(event) {
     fsFile.owner = Meteor.userId();
     fsFile.converted = false;
     fsFile.timeUploaded = new Date();
-    fsFile.about = `The model ${fsFile.name()} was uploaded on ${fsFile.timeUploaded}`;
+    fsFile.about = `The model ${fsFile.name()} was uploaded on ${
+      fsFile.timeUploaded
+    }`;
     fsFile.viewsCount = 0;
     fsFile.conversion = 0;
 

@@ -47,8 +47,8 @@ OgvSchema = new SimpleSchema({
 OgvSettings = new Meteor.Collection("OgvSettings");
 OgvSettings.attachSchema(OgvSchema);
 /**
-     * No one is allowed to insert and only admin can update the settings
-     */
+ * No one is allowed to insert and only admin can update the settings
+ */
 
 OgvSettings.allow({
   insert() {

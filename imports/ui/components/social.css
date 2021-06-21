@@ -6,6 +6,7 @@
 .comments-wrapper {
   margin-top: 5px;
 }
+
 .comments {
   display: none;
   overflow: hidden;
@@ -24,9 +25,11 @@
   padding: 10px;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
+
 .comments form {
   margin: 0;
 }
+
 .comments button {
   border: 0;
   font-weight: bold;
@@ -34,9 +37,11 @@
   padding: 5px 8px;
   background-color: #f74c3c;
 }
+
 .comment-item {
   padding: 10px;
 }
+
 .comment-item p {
   padding-top: 5px;
 }

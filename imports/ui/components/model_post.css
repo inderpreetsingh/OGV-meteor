@@ -4,9 +4,11 @@
   background: #FFF;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
+
 .post .poster {
   padding: 10px 10px;
 }
+
 .post .poster img {
   height: 32px;
   margin-right: 8px;
@@ -21,11 +23,13 @@
   font-size: 24px;
   padding: 20px;
 }
+
 .post .actions {
   padding: 10px;
   height: 32px;
   box-sizing: content-box;
 }
+
 .post .info {
   padding: 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);

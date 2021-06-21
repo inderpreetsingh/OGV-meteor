@@ -20,7 +20,10 @@ Template.modelPost.events({
     });
   },
   "click .commentButton": function(e) {
-    $(e.target).parents(".post").find(".comments").slideToggle();
+    $(e.target)
+      .parents(".post")
+      .find(".comments")
+      .slideToggle();
   },
   "click .love": function() {
     const love = {
@@ -36,9 +39,9 @@ Template.modelPost.events({
 
 Template.modelPost.helpers({
   /**
-     * returns image of the user from database, if there's no image a default
-     * image is shown.
-     */
+   * returns image of the user from database, if there's no image a default
+   * image is shown.
+   */
   userImg() {
     if (this.postType === "posted") {
       modelOwner = Meteor.users.findOne(this.postedBy);

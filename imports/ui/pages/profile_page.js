@@ -117,9 +117,9 @@ Template.profilePage.helpers({
   },
 
   /**
-     * returns image of the user from database, if there's no image a default
-     * image is shown.
-     */
+   * returns image of the user from database, if there's no image a default
+   * image is shown.
+   */
   userImg() {
     const parts = location.href.split("/");
     const otherId = parts.pop(); // id of user whose page is being visited
@@ -138,9 +138,9 @@ Template.profilePage.helpers({
   },
 
   /**
-     * Returns the number of people the user (whose profile is being viewed
-     * currently) is following.
-     */
+   * Returns the number of people the user (whose profile is being viewed
+   * currently) is following.
+   */
   followingCount() {
     const parts = location.href.split("/");
     // id of user whose page is being visited
@@ -155,9 +155,9 @@ Template.profilePage.helpers({
   },
 
   /**
-     * Returns the number of people the user (whose profile is being viewed
-     * currently) is bring followed by.
-     */
+   * Returns the number of people the user (whose profile is being viewed
+   * currently) is bring followed by.
+   */
   followerCount() {
     const parts = location.href.split("/");
     const otherId = parts.pop(); // id of user whose page is being visited
@@ -173,9 +173,9 @@ Template.profilePage.helpers({
 
 Template.profileModelFeed.helpers({
   /**
-     * models helper finds all the models from the user and then sorts
-     * them in reverse chronological order.
-     */
+   * models helper finds all the models from the user and then sorts
+   * them in reverse chronological order.
+   */
   posts() {
     const parts = location.href.split("/");
     const urlId = parts.pop(); // id of user whose page is being visited
@@ -230,8 +230,8 @@ Template.profileModelFeed.helpers({
   },
 
   /**
- * Returns user details for the profile being viewed currently
- */
+   * Returns user details for the profile being viewed currently
+   */
   user() {
     const parts = location.href.split("/");
     const urlId = parts.pop(); // id of user whose page is being visited

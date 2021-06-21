@@ -31,14 +31,19 @@ Template.signUp.events({
     e.preventDefault();
 
     const signUpForm = $(e.currentTarget),
-      email = trimInput(signUpForm.find("#sign-up-email").val().toLowerCase()),
+      email = trimInput(
+        signUpForm
+          .find("#sign-up-email")
+          .val()
+          .toLowerCase()
+      ),
       password = signUpForm.find("#sign-up-password").val(),
       passwordConfirm = signUpForm.find("#sign-up-password-confirm").val(),
       username = signUpForm.find("#sign-up-username").val();
 
     /**
-         * Validates the sign up form fields and gives errors if any
-         */
+     * Validates the sign up form fields and gives errors if any
+     */
 
     if (
       isNotEmpty(email) &&

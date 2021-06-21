@@ -51,7 +51,9 @@ Template.modelViewer.events({
   },
 
   "click #sm-item-edit": function() {
-    Router.current().render(Template.ModelViewer).data();
+    Router.current()
+      .render(Template.ModelViewer)
+      .data();
   },
 
   "click #sm-item-embed": function() {
@@ -224,22 +226,22 @@ function init() {
   }
 
   /**
-     * Setting Up the scene:
-     * Grabs the model-container div from template into a variable
-     * named container, and sets up the scene
-     */
+   * Setting Up the scene:
+   * Grabs the model-container div from template into a variable
+   * named container, and sets up the scene
+   */
   const container = document.getElementById("model-container");
   const target = document.getElementById("main");
 
   /**
-     * Create a scene, that will hold all our elements such
-     * as objects, cameras and lights
-     */
+   * Create a scene, that will hold all our elements such
+   * as objects, cameras and lights
+   */
   scene = new THREE.Scene();
 
   /**
-     * Create a camera, which defines where we're looking at.
-     */
+   * Create a camera, which defines where we're looking at.
+   */
   camera = new THREE.PerspectiveCamera(
     65,
     target.clientWidth / target.clientHeight,
@@ -251,8 +253,8 @@ function init() {
   camera.position.y = 2000;
 
   /**
-     * Light up the scene
-     */
+   * Light up the scene
+   */
   /*
     const ambient = new THREE.AmbientLight(0x555555)
     scene.add(ambient)
@@ -280,8 +282,8 @@ function init() {
   }
 
   /**
-     * Loader Managerial tasks
-     */
+   * Loader Managerial tasks
+   */
   const manager = new THREE.LoadingManager();
   manager.onProgress = function(item, loaded, total) {
     console.log(`[model_viewer] Loading ${loaded}/${total} files`);
@@ -289,24 +291,24 @@ function init() {
   };
 
   /**
-     * Adds the model to the viewer aka loads OBJ files
-     * using OBJ-Loader
-     */
+   * Adds the model to the viewer aka loads OBJ files
+   * using OBJ-Loader
+   */
   group = new THREE.Object3D();
   const loader = new THREE.OBJLoader(manager);
   const mtlLoader = new THREE.MTLLoader(manager);
 
   /**
-     * Get .mtl file
-     */
+   * Get .mtl file
+   */
   const mtlList = MTLFiles.find({
     gFile: model._id
   }).map(o => o);
 
   /**
-     * Adds material to the model, which hence controls
-     * how the model shall look
-     */
+   * Adds material to the model, which hence controls
+   * how the model shall look
+   */
 
   const OBJMaterialArray = [];
 
@@ -348,8 +350,8 @@ function init() {
   }
 
   /**
-     * If webgl is there then use it otherwise use canvas
-     */
+   * If webgl is there then use it otherwise use canvas
+   */
   if (Detector.webgl) {
     renderer = new THREE.WebGLRenderer({
       alpha: true,
@@ -363,8 +365,8 @@ function init() {
   }
 
   /**
-     * Sets size and color to renderer
-     */
+   * Sets size and color to renderer
+   */
   renderer.setSize(target.clientWidth, target.clientHeight);
   if (isEmbedded) {
     renderer.setClearColor(0, 0);
@@ -374,8 +376,8 @@ function init() {
   container.appendChild(renderer.domElement);
 
   /**
-     * orbitControls for zoom in/ zoom out and other basic controls
-     */
+   * orbitControls for zoom in/ zoom out and other basic controls
+   */
   controls = new THREE.OrbitControls(camera, renderer.domElement);
   controls.addEventListener("change", render);
 

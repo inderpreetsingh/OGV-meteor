@@ -1,6 +1,5 @@
 <template name="modelMeta">
-	<div class="modelMeta">
-	</div>
+	<div class="modelMeta"></div>
 	<div class="secondary-container" id="uploader-container">
 		<form action=" " method="post" class="secondary-form" id="uploader-form">
 
@@ -25,9 +24,9 @@
 				<label for="uploader-about" class="input-head"><strong> Category </strong></label><br>
 				<em><p style="font-size: 15px">
 			{{#with modelCategory}}
-            	{{#each categories}}
-            		{{.}}, 
-            	{{/each}}
+				{{#each categories}}
+					{{.}}, 
+				{{/each}}
 			{{/with}}
 			</p></em>
 				<div id="checkform-left">
@@ -65,5 +64,4 @@
 			}
 		}
 	</script>
-
 </template>

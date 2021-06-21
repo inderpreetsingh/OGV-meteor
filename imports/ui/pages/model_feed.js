@@ -37,9 +37,9 @@ import "../components/newsfeed_sidebar.js";
 
 Template.modelFeed.helpers({
   /**
-     * models helper finds all the models from the database and then sorts
-     * them in reverse chronological order.
-     */
+   * models helper finds all the models from the database and then sorts
+   * them in reverse chronological order.
+   */
   posts() {
     const currentUser = Meteor.user();
     const audience = ["public", "followers"];

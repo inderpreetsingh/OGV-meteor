@@ -274,7 +274,7 @@ function loggingIn() {
 /**
  * Remove notifactions and error messages that have been seen
  * everytime a route is changed
-*/
+ */
 
 Router.onBeforeAction(validateUser, {
   only: [

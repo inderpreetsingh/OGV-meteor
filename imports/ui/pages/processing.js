@@ -82,8 +82,8 @@ function generate() {
   const scene = new THREE.Scene();
 
   /**
-     * Create a camera, which defines where we're looking at.
-     */
+   * Create a camera, which defines where we're looking at.
+   */
   const camera = new THREE.PerspectiveCamera(45, width / height, 1, 200000);
   camera.position.z = 200;
   camera.position.x = 200;
@@ -121,8 +121,8 @@ function generate() {
     .appendChild(renderer.domElement);
 
   /**
-     * Get .mtl file
-     */
+   * Get .mtl file
+   */
   const mtlList = MTLFiles.find({
     gFile: model._id
   }).map(o => o);

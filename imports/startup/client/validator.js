@@ -68,6 +68,29 @@ isValidPassword = function(password) {
 };
 
 /**
+ * Validates that the admin has set email server
+ */
+
+isAdminEmailServerOn = function(value) {
+  const { username, password, server, port } = Meteor.settings.public.smtp;
+  const { sender } = Meteor.settings.public.general;
+  if (
+    username.length > 1 &&
+    server.length > 1 &&
+    password.length > 0 &&
+    sender.length > 0 &&
+    port
+  ) {
+    return true;
+  }
+  // Shows error if the Email server is not setup
+  sAlert.error(
+    "Cannot connect to Email Server. Please contact Admin. If you are Admin please setup Email server."
+  );
+  return false;
+};
+
+/**
  * Checks if password field and confirm password field match
  */
 

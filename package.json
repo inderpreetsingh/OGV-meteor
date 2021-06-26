@@ -21,7 +21,8 @@
     "test": "eslint .",
     "mocha-test": "meteor test --driver-package dispatch:mocha",
     "build:linux": "./scripts/build_linux.sh",
-    "docs": "jsdoc -r -d private/docs/jsdoc imports client collections"
+    "docs": "jsdoc -r -d private/docs/jsdoc imports client collections",
+    "precommit": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
   "homepage": "https://github.com/BRL-CAD/OGV-meteor#readme",
   "dependencies": {
     "@babel/runtime": "^7.14.5",
-    "bcrypt": "^5.0.0"
+    "bcrypt": "^5.0.0",
+    "meteor-husky": "^0.14.6"
   }
 }

@@ -12,6 +12,8 @@ Template.cfsUploader.events({
 });
 
 function uploadFile(event) {
+  NProgress.configure({ parent: "#upload-stepper-head" });
+  NProgress.start();
   FS.Utility.eachFile(event, file => {
     const fsFile = new FS.File(file);
     fsFile.owner = Meteor.userId();
@@ -36,4 +38,5 @@ function uploadFile(event) {
       }
     });
   });
+  NProgress.done();
 }

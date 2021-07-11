@@ -22,10 +22,10 @@
 
 import "../imports/ui/layouts/layout.js"; // Main layout
 
-import "../imports/ui/components/header.js"; // Header
-import "../imports/ui/components/menu_new.js"; // temp new menu
-import "../imports/ui/components/preloader.js"; // Preloader
-import "../imports/ui/components/error.js";
+import "../imports/ui/components/header/header.js"; // Header
+import "../imports/ui/components/menu-new/menu_new.js"; // temp new menu
+import "../imports/ui/components/preloader/preloader.js"; // Preloader
+import "../imports/ui/components/error/error.js"; // Error component
 
 import "../imports/ui/pages/landingPage.js"; // /
 import "../imports/ui/pages/model_feed.js"; // /newsfeed

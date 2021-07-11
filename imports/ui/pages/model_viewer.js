@@ -32,7 +32,7 @@ import "../../utils/Detector.js";
 import Clipboard from "../../utils/clipboard.min.js";
 
 import "./model_viewer.scss";
-import "../components/model_editor.js";
+import "../components/model-editor/model_editor.js";
 
 let grid;
 let axes;

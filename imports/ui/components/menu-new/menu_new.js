@@ -1,6 +1,6 @@
 import "./menu_new.html";
 import "./menu_new.scss";
-import "./notifications.js";
+import "../notifications/notifications.js";
 
 Template.newMenu.helpers({
   activeIfTemplateIs(template) {

@@ -31,7 +31,7 @@ import "../../utils/OrbitControls.js";
 import "../../utils/Detector.js";
 import Clipboard from "../../utils/clipboard.min.js";
 
-import "./model_viewer.css";
+import "./model_viewer.scss";
 import "../components/model_editor.js";
 
 let grid;

@@ -1,5 +1,5 @@
 import "./model_post.html";
-import "./model_post.css";
+import "./model_post.scss";
 
 Template.modelPost.events({
   "click .shareButton": function(event) {

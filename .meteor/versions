@@ -72,6 +72,7 @@ facebook-oauth@1.8.0
 fastclick@1.0.13
 fetch@0.1.1
 fortawesome:fontawesome@4.7.0
+fourseven:scss@4.14.2
 geojson-utils@1.0.10
 github-config-ui@1.0.1
 github-oauth@1.2.3

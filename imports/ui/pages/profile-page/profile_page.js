@@ -1,5 +1,5 @@
 import "./profile_page.html";
-import "../components/model-post/model_post.js";
+import "../../components/model-post/model_post.js";
 
 Template.profilePage.events({
   "click #followButton": function() {

@@ -1,9 +1,9 @@
 import "./simple_view.html";
-import "../../utils/OBJLoader.js";
-import "../../utils/MTLLoader.js";
-import "../../utils/OrbitControls.js";
-import "../../utils/Detector.js";
-import Clipboard from "../../utils/clipboard.min.js";
+import "../../../utils/OBJLoader.js";
+import "../../../utils/MTLLoader.js";
+import "../../../utils/OrbitControls.js";
+import "../../../utils/Detector.js";
+import Clipboard from "../../../utils/clipboard.min.js";
 
 Template.simpleView.events({
   "click #sm-item-embed": function() {

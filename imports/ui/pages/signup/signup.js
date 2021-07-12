@@ -24,7 +24,7 @@
  */
 
 import "./signup.html";
-import "../components/primary-branding/primary_branding.js";
+import "../../components/primary-branding/primary_branding.js";
 
 Template.signUp.events({
   "submit #sign-up-form": function(e) {

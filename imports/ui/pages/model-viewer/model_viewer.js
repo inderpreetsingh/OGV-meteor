@@ -25,14 +25,14 @@
  */
 
 import "./model_viewer.html";
-import "../../utils/OBJLoader.js";
-import "../../utils/MTLLoader.js";
-import "../../utils/OrbitControls.js";
-import "../../utils/Detector.js";
-import Clipboard from "../../utils/clipboard.min.js";
+import "../../../utils/OBJLoader.js";
+import "../../../utils/MTLLoader.js";
+import "../../../utils/OrbitControls.js";
+import "../../../utils/Detector.js";
+import Clipboard from "../../../utils/clipboard.min.js";
 
 import "./model_viewer.scss";
-import "../components/model-editor/model_editor.js";
+import "../../components/model-editor/model_editor.js";
 
 let grid;
 let axes;

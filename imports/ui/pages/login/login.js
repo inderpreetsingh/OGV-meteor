@@ -26,7 +26,7 @@
  */
 
 import "./login.html";
-import "../components/primary-branding/primary_branding.js";
+import "../../components/primary-branding/primary_branding.js";
 
 Template.logIn.events({
   "submit #log-in-form": function(e) {

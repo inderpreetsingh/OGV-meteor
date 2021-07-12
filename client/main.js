@@ -27,21 +27,21 @@ import "../imports/ui/components/menu-new/menu_new.js"; // temp new menu
 import "../imports/ui/components/preloader/preloader.js"; // Preloader
 import "../imports/ui/components/error/error.js"; // Error component
 
-import "../imports/ui/pages/landingPage.js"; // /
-import "../imports/ui/pages/model_feed.js"; // /newsfeed
-import "../imports/ui/pages/profile_page.js"; // /profile
-import "../imports/ui/pages/explore.js"; // /explore
-import "../imports/ui/pages/signup.js"; // /sign-up
-import "../imports/ui/pages/login.js"; // /log-in
-import "../imports/ui/pages/cfs_uploader.js"; // /upload
-import "../imports/ui/pages/dashboard.js"; // /dashboard #TODO: rename to 'settings'
-import "../imports/ui/pages/model_viewer.js"; // /model/:id
+import "../imports/ui/pages/landing-page/landingPage.js"; // /
+import "../imports/ui/pages/model-feed/model_feed.js"; // /newsfeed
+import "../imports/ui/pages/profile-page/profile_page.js"; // /profile
+import "../imports/ui/pages/explore/explore.js"; // /explore
+import "../imports/ui/pages/signup/signup.js"; // /sign-up
+import "../imports/ui/pages/login/login.js"; // /log-in
+import "../imports/ui/pages/cfs-uploader/cfs_uploader.js"; // /upload
+import "../imports/ui/pages/dashboard/dashboard.js"; // /dashboard #TODO: rename to 'settings'
+import "../imports/ui/pages/model-viewer/model_viewer.js"; // /model/:id
 import "../imports/ui/pages/404.html"; // /404// dataNotFound
-import "../imports/ui/pages/forgot_password.js"; // /forgot-password
+import "../imports/ui/pages/forgot-password/forgot_password.js"; // /forgot-password
 import "../imports/ui/pages/notverified.html"; // /not-verified
-import "../imports/ui/pages/model_meta.js"; // /description/:id
-import "../imports/ui/pages/processing.js"; // /processing
-import "../imports/ui/pages/simple_view.js"; // /view/:id
+import "../imports/ui/pages/model-meta/model_meta.js"; // /description/:id
+import "../imports/ui/pages/processing/processing.js"; // /processing
+import "../imports/ui/pages/simple-view/simple_view.js"; // /view/:id
 
 // Startup
 

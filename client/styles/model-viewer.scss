@@ -113,6 +113,14 @@
   position: absolute;
 }
 
+.color-input {
+  width: 43%;
+  height: 30px !important;
+  margin: 0 0 3px 3px !important;
+  padding: 0px !important;
+  border: none !important;
+}
+
 @media (max-width: 767px) {
   .keyboard-shortcuts {
     display: none;

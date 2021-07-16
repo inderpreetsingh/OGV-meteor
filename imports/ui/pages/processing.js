@@ -1,5 +1,5 @@
 import "./processing.html";
-import "./processing.css";
+import "./processing.scss";
 
 let started = false;
 

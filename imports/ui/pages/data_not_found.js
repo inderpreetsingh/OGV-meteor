@@ -1,2 +1,2 @@
 import "./data_not_found.html";
-import "./data_not_found.css";
+import "./data_not_found.scss";

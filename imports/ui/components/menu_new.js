@@ -1,5 +1,5 @@
 import "./menu_new.html";
-import "./menu_new.css";
+import "./menu_new.scss";
 import "./notifications.js";
 
 Template.newMenu.helpers({

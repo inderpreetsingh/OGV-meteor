@@ -1,5 +1,5 @@
 import "./header.html";
-import "./header.css";
+import "./header.scss";
 
 Template.header.events({
   "click #header-profile-button": function() {

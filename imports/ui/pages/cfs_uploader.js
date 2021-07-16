@@ -1,5 +1,5 @@
 import "./cfs_uploader.html";
-import "./cfs_uploader.css";
+import "./cfs_uploader.scss";
 
 Template.cfsUploader.events({
   "dropped #dropzone": function(event, temp) {

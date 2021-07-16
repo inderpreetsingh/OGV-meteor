@@ -31,9 +31,9 @@
  */
 
 import "./model_feed.html";
-import "../components/models.html";
-import "../components/social.js";
-import "../components/newsfeed_sidebar.js";
+import "../../components/models/models.html";
+import "../../components/social/social.js";
+import "../../components/newsfeed/newsfeed_sidebar.js";
 
 Template.modelFeed.helpers({
   /**

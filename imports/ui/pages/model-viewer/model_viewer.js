@@ -1,17 +1,130 @@
-import "./simple_view.html";
-import "../../utils/OBJLoader.js";
-import "../../utils/MTLLoader.js";
-import "../../utils/OrbitControls.js";
-import "../../utils/Detector.js";
-import Clipboard from "../../utils/clipboard.min.js";
+/**
+/*               M O D E L _ V I E W E R . J S
+ * BRL-CAD
+ *
+ * Copyright (c) 1995-2013 United States Government as represented by
+ * the U.S. Army Research Laboratory.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License
+ * version 2.1 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+     * License along with this file; see the file named COPYING for more
+ * information.
+ */
 
-Template.simpleView.events({
+/** @file OGV/client/views/model_viewer.js
+ * Events, helpers and other logic required to render 3d models in
+ * model Viewer.
+ */
+
+import "./model_viewer.html";
+import "../../../utils/OBJLoader.js";
+import "../../../utils/MTLLoader.js";
+import "../../../utils/OrbitControls.js";
+import "../../../utils/Detector.js";
+import Clipboard from "../../../utils/clipboard.min.js";
+
+import "./model_viewer.scss";
+import "../../components/model-editor/model_editor.js";
+
+let grid;
+let axes;
+let group;
+
+Template.modelViewer.events({
+  "click #sm-item-love": function() {
+    const love = {
+      postId: this._id
+    };
+    Meteor.call("love", love, error => {
+      if (error) {
+        sAlert.error(error.reason);
+      }
+    });
+  },
+
+  "click #sm-item-edit": function() {
+    Router.current()
+      .render(Template.ModelViewer)
+      .data();
+  },
+
   "click #sm-item-embed": function() {
     sAlert.success("Embed code has been copied to clipboard");
+  },
+
+  "click #sm-item-comment": function() {
+    $(".comments-toolbar").removeClass("ec-inactive");
+    $(".ec-model").addClass("ec-inactive");
+    $(".edit-controls").toggleClass("edit-controls-hidden");
+  },
+
+  "click #comments-close-button": function() {
+    $("#overlay-comments").css({
+      bottom: "-10000px"
+    });
+  },
+
+  "click #sm-item-owner": function() {
+    ownerId();
+  },
+
+  "click #toggle-grid": function() {
+    grid.visible = !grid.visible;
+    animate();
+  },
+
+  "click #toggle-axes": function() {
+    axes.visible = !axes.visible;
+    animate();
+  },
+
+  "click .obj-heading": function(e) {
+    test = e;
+    index = e.currentTarget.dataset.src;
+    if (e.target.classList[0] === "eye-img") {
+      eyeImg = e.target;
+      if (eyeImg.attributes.src.value === "/icons/not-eye.png") {
+        group.children[index].traverse(object => {
+          object.visible = true;
+        });
+        eyeImg.src = "/icons/eye.png";
+        animate();
+      } else {
+        group.children[index].traverse(object => {
+          object.visible = false;
+        });
+        eyeImg.src = "/icons/not-eye.png";
+        animate();
+      }
+    }
   }
 });
 
-Template.simpleView.helpers({
+const objfields = ["original.name", "gFile"];
+ObjSearch = new SearchSource("objFiles", objfields);
+
+Template.modelViewer.helpers({
+  object() {
+    return ObjSearch.getData({
+      transform(matchText, regExp) {
+        return matchText.replace(regExp, "$&");
+      }
+    });
+  },
+  embedCode() {
+    const thisURL = `${Meteor.absoluteUrl()}models/${this._id}/shared=true`;
+    embedCode = `<iframe width="500" height="250" src="${thisURL}" frameborder="0"></iframe>`;
+    return embedCode;
+  },
+
   lovers() {
     loversObj = Lovers.findOne({
       postId: this._id
@@ -25,27 +138,13 @@ Template.simpleView.helpers({
 
   model() {
     model = ModelFiles.findOne(this._id);
-
-    console.log("model", model);
+    console.log(model);
     return model;
-  },
-
-  modelDownloadUrl() {
-    model = ModelFiles.findOne(this._id);
-    if (model) {
-      console.log("model", model.url({ filename: `${this._id}.g` }));
-      const url = model.url({ filename: `${this._id}.g` });
-      return url;
-    }
   },
 
   ownerId() {
     model = ModelFiles.findOne(this._id);
     return model.owner;
-  },
-
-  owner() {
-    return Meteor.users.findOne(model.owner);
   },
 
   ownerDp() {
@@ -56,10 +155,12 @@ Template.simpleView.helpers({
     return "/icons/User.png";
   },
 
-  embedCode() {
-    const thisURL = `${Meteor.absoluteUrl()}models/${this._id}/shared=true`;
-    embedCode = `<iframe width="500" height="250" src="${thisURL}" frameborder="0"></iframe>`;
-    return embedCode;
+  displayModelName(name) {
+    const parts = name.split("_");
+    // if(parts[1] == "merged") {
+    //   return ``
+    // }
+    return;
   }
 });
 
@@ -68,13 +169,23 @@ Template.simpleView.helpers({
  */
 let model = this.data;
 
-Template.simpleView.rendered = function() {
-  $(".comments").css("display", "block");
+Template.modelViewer.rendered = function() {
   model = this.data;
   objList = getObjFiles(model);
+  console.log(`[model_viewer] Loading .obj files ${objList}`);
+  clipboard = new Clipboard("#sm-item-embed");
+  clipboard.on("success", e => {
+    console.log("Action:", e.action);
+    console.log("Text:", e.text);
+    console.log("Trigger:", e.trigger);
 
-  const clipboard = new Clipboard("#sm-item-embed");
+    e.clearSelection();
+  });
 
+  clipboard.on("error", e => {
+    console.log("Action:", e.action);
+    console.log("Trigger:", e.trigger);
+  });
   init();
   render();
 };
@@ -120,7 +231,7 @@ function init() {
    * named container, and sets up the scene
    */
   const container = document.getElementById("model-container");
-  const target = document.getElementById("model-container");
+  const target = document.getElementById("main");
 
   /**
    * Create a scene, that will hold all our elements such
@@ -161,11 +272,12 @@ function init() {
 
   if (!isEmbedded) {
     /** Axes */
-    const axes = new THREE.AxisHelper(10000);
+    axes = new THREE.AxisHelper(10000);
     scene.add(axes);
 
     /** Grid */
-    const grid = new THREE.GridHelper(3000, 100);
+    grid = new THREE.GridHelper(3000, 100);
+    console.log(grid);
     scene.add(grid);
   }
 
@@ -182,7 +294,7 @@ function init() {
    * Adds the model to the viewer aka loads OBJ files
    * using OBJ-Loader
    */
-  const group = new THREE.Object3D();
+  group = new THREE.Object3D();
   const loader = new THREE.OBJLoader(manager);
   const mtlLoader = new THREE.MTLLoader(manager);
 
@@ -197,6 +309,7 @@ function init() {
    * Adds material to the model, which hence controls
    * how the model shall look
    */
+
   const OBJMaterialArray = [];
 
   if (mtlList && mtlList.length > 0) {
@@ -269,14 +382,14 @@ function init() {
   controls.addEventListener("change", render);
 
   window.addEventListener("resize", onWindowResize, false);
-  target.addEventListener("keydown", onKeyDown, false);
+  window.addEventListener("keydown", onKeyDown, false);
 }
 
 /**
  * when window resizes, the size of modelviewer needs to resize
  */
 function onWindowResize() {
-  const target = document.getElementById("model-container");
+  const target = document.getElementById("main");
 
   camera.aspect = target.clientWidth / target.clientHeight;
   camera.updateProjectionMatrix();

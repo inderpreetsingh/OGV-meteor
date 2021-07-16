@@ -105,6 +105,12 @@ Template.modelViewer.events({
         animate();
       }
     }
+  },
+
+  "change #viewer-bg-color": function(e) {
+    const viewerBgColor = e.currentTarget.value.slice(1);
+    const colorHex = `0x${viewerBgColor}`;
+    renderer.setClearColor(parseInt(colorHex, 16), 1);
   }
 });
 

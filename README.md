@@ -61,14 +61,37 @@ You will be asked for sudo access twice (for node and mongo)
   * sudo apt-get install git
   * git clone https://github.com/BRL-CAD/OGV-meteor
 
-## Run
-Move config.example.json to config.json and write admin password there.
+## Setup and Run
 
-To run app while developing use: 
+* You have to fill mail server configurations in the `settings.json` file
+
+```json
+{
+	"adminPassword": "password",
+	"private": {},
+	"public": {
+		"smtp": {
+			"username": "",
+			"password": "",
+			"server": "",
+			"port": null
+		},
+		"general": {
+			"sender": ""
+		}
+	}
+}
+```
+> Please note this step necessary. Otherwise, you'll not be able to login to the application.
+
+* Move config.example.json to config.json and write admin password there.
+
+* To run app while developing use: 
 ```
 npm run start
 ```
-Then open Browser and type in URL
+
+* Then open Browser and type in URL
 ```
 http://localhost:3000
 ```

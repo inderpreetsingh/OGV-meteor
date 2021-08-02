@@ -23,12 +23,24 @@
  * during the first installation of the software
  */
 if (OgvSettings.find().count() === 0) {
+  // Fetch fixtures data from settings.json
+  const { fixtures } = Meteor.settings.public;
+  const {
+    settingSwitch,
+    siteName,
+    gobjPath,
+    mgedPath,
+    mailUrl,
+    landingPageModel
+  } = fixtures;
+
+  // Insert fixtures into database when there is no data in the database
   OgvSettings.insert({
-    settingSwitch: true,
-    siteName: "Online Geometry Viewer",
-    mailUrl: "http://username:password@example.com",
-    gobjPath: "/usr/brlcad/dev-7.24.2/bin/g-obj",
-    mgedPath: "/usr/brlcad/dev-7.24.2/bin/mged",
-    landingPageModel: "axis.obj"
+    settingSwitch,
+    siteName,
+    mailUrl,
+    gobjPath,
+    mgedPath,
+    landingPageModel
   });
 }

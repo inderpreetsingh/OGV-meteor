@@ -113,6 +113,36 @@ Template.modelViewer.events({
     renderer.setClearColor(parseInt(colorHex, 16), 1);
     // update the view after updating color
     render();
+  },
+
+  "click #top-view": function() {
+    camera.position.set(0, 3000, 0);
+    camera.lookAt(scene.position);
+    render();
+  },
+
+  "click #bottom-view": function() {
+    camera.position.set(0, -3000, 0);
+    camera.lookAt(scene.position);
+    render();
+  },
+
+  "click #rear-view": function() {
+    camera.position.set(3000, 0, 0);
+    camera.lookAt(scene.position);
+    render();
+  },
+
+  "click #front-view": function() {
+    camera.position.set(-3000, 0, 0);
+    camera.lookAt(scene.position);
+    render();
+  },
+
+  "click #reset-view": function() {
+    camera.position.set(2000, 2000, 2000);
+    camera.lookAt(scene.position);
+    render();
   }
 });
 

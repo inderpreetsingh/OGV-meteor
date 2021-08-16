@@ -40,12 +40,29 @@
 		</div>
 
 		<div style="text-transform: uppercase; margin: 20px 0;">Settings</div>
-		<span>Grid visibility</span>
-		<button class="button button-small button-blue" id="toggle-grid">Toggle</button>
-		<span>Axis visibility</span>
-		<button class="button button-small button-blue" id="toggle-axes">Toggle</button>
-		<span>Background</span>
-		<input class="color-input" type="color" value="#555555" id="viewer-bg-color">
+		<div class="setting-wrapper">
+			<span>Grid visibility</span>
+			<button class="button button-small button-blue" id="toggle-grid">Toggle</button>
+		</div>
+		<div class="setting-wrapper">
+			<span>Axis visibility</span>
+			<button class="button button-small button-blue" id="toggle-axes">Toggle</button>
+		</div>
+		<div class="setting-wrapper">
+			<span>Background</span>
+			<input class="color-input" type="color" value="#555555" id="viewer-bg-color">
+		</div>
+
+		<span>Change Camera View</span>
+		<div class="setting-wrapper">
+			<button class="button button-small button-blue button-50" id="top-view">Top</button>
+			<button class="button button-small button-blue button-50" id="bottom-view">Bottom</button>
+		</div>
+		<div class="setting-wrapper">
+			<button class="button button-small button-blue button-50" id="rear-view">Rear</button>
+			<button class="button button-small button-blue button-50" id="front-view">Front</button>
+		</div>
+		<button class="button button-small button-blue button-full" id="reset-view">Reset</button>
 	</div>
 
 	<div id="model-container">

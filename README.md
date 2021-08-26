@@ -8,23 +8,17 @@ and share 3D CAD models. They can also host these models online, can like (love)
 or comment on them. In a nutshell it can be looked at as a social blogging 
 platform for 3D models. 
 
-## Contribution Guidelines
-TL;DR
-We love contributions, if you want to contribute make sure you are on development branch to see the latest code. To prevent any duplicate work, please communicate if you are working on something. 
+## Table of Contents
 
-The best (but not the only) way to contribute is
-* Check if the issue you are trying to solve is already reported. (search the issue tracker)
-* If it is already created, comment with your willingness to work on it.
-* If it is not created, please create a new one. In any case try to inform about what you are working on.
-* Make sure you are on latest code (`development` branch)
-* Make sure when you make a Pull request, it is to the development branch.
-* [optional] Assign a reviewer from one of the contributors, specially if you are new and have been talking to existing contributors.
-* Never merge your own pull requests.
-* Always check the "files changed" tab for any surprises. 
-* Be polite and nice.
+- [Installation](#installation)
+	* [Using Install Script](#debian-and-ubuntu-based-linux-distributions)
+	* [Manual Installation](#manual)
+- [Setup and Run](#setup-and-run)
+- [Lint](#lint)
+- [Build and Deploy](#build-and-deploy)
+- [Contribution](#contribution)
 
-
-## Install
+## Installation
 
 Clone this repo
 
@@ -61,14 +55,37 @@ You will be asked for sudo access twice (for node and mongo)
   * sudo apt-get install git
   * git clone https://github.com/BRL-CAD/OGV-meteor
 
-## Run
-Move config.example.json to config.json and write admin password there.
+## Setup and Run
 
-To run app while developing use: 
+* You have to fill mail server configurations in the `settings.json` file
+
+```json
+{
+	"adminPassword": "password",
+	"private": {},
+	"public": {
+		"smtp": {
+			"username": "",
+			"password": "",
+			"server": "",
+			"port": null
+		},
+		"general": {
+			"sender": ""
+		}
+	}
+}
+```
+> Please note this step necessary. Otherwise, you'll not be able to login to the application.
+
+* Move config.example.json to config.json and write admin password there.
+
+* To run app while developing use: 
 ```
 npm run start
 ```
-Then open Browser and type in URL
+
+* Then open Browser and type in URL
 ```
 http://localhost:3000
 ```
@@ -91,3 +108,5 @@ To start OGV run
 ```
 App will be running at http://localhost:3000
 
+## Contribution
+Please see [CONTRIBUTION.md](CONTRIBUTING.md)

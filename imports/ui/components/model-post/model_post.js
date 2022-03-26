@@ -27,7 +27,7 @@ Template.modelPost.events({
   },
   "click .love": function() {
     const love = {
-      postId: this.postId
+      postId: this._id
     };
     Meteor.call("love", love, error => {
       if (error) {
